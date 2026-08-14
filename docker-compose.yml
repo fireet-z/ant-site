@@ -1,5 +1,5 @@
 # ============================================================
-# 简舜科技建站信息聚合平台 - Docker 编排（群晖 Container Manager / docker-compose 通用）
+# XX科技建站信息聚合平台 - Docker 编排（群晖 Container Manager / docker-compose 通用）
 # 使用方式：
 #   1. 将本目录上传到群晖（如 /volume1/docker/jianshun-site）
 #   2. Container Manager -> 项目 -> 新增 -> 选择本目录 -> 构建并启动
