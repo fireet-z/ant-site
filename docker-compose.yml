@@ -1,0 +1,29 @@
+# ============================================================
+# 简舜科技建站信息聚合平台 - Docker 编排（群晖 Container Manager / docker-compose 通用）
+# 使用方式：
+#   1. 将本目录上传到群晖（如 /volume1/docker/jianshun-site）
+#   2. Container Manager -> 项目 -> 新增 -> 选择本目录 -> 构建并启动
+#   3. 访问 http://群晖IP:3000
+# 数据持久化：data/ 与 uploads/ 为挂载卷，备份这两个目录即可
+# ============================================================
+services:
+  jianshun-site:
+    build: .
+    container_name: jianshun-site
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - PORT=3000
+      # 以下为环境变量默认值；已配置可在网页「AI 配置」中动态修改（优先级更高）
+      - AI_API_KEY=${AI_API_KEY:-}
+      - AI_API_URL=${AI_API_URL:-https://api.openai.com/v1/chat/completions}
+      - AI_MODEL=${AI_MODEL:-gpt-4o-mini}
+      - AI_AMAP_KEY=${AI_AMAP_KEY:-}
+      - MAX_UPLOAD_MB=${MAX_UPLOAD_MB:-50}
+    volumes:
+      - ./data:/app/data
+      - ./uploads:/app/uploads
+    # 可选资源限制（取消注释启用）
+    # mem_limit: 512m
+    # cpus: 1.0

@@ -1,0 +1,9 @@
+node_modules
+data
+uploads
+.env
+*.log
+.git
+verify-result.json
+UsersADMINI~1AppDataLocalTemp*
+.smoke*
